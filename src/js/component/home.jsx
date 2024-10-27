@@ -1,26 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
+import TodoList from "./TodoList";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
-//create your first component
 const Home = () => {
+
+	const [tasks, setTasks] = useState([]);
+	const [newTask, setNewTask] = useState("");
+
+	const addTask = () => {
+		if (newTask.trim() === "") return; // Evitar tareas vacías
+		setTasks([...tasks, newTask.trim()]);
+		setNewTask(""); // Limpiar el campo de entrada
+	};
+
+	// Eliminar una tarea por índice
+	const deleteTask = (index) => {
+		setTasks(tasks.filter((_, i) => i !== index));
+	};
+
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
+		<>
+			<div className="card justify-content-center align-items-center shadow col-6 mx-auto mt-5">
+				<h1 className="card-title mb-3">
+					Lista de Tareas
+				</h1>
+
+				<input
+					className="text-center"
+					type="text"
+					placeholder="Añade una nueva tarea"
+					value={newTask}
+					onChange={(e) => setNewTask(e.target.value)}
+				/>
+				<button
+					type="button"
+					className="btn btn-outline-secondary mt-2"
+					onClick={addTask}>
+					<i className="fas fa-plus-circle me-2"></i>
+					Agregar
+				</button>
+				<TodoList tasks={tasks} deleteTask={deleteTask} />
+				<p>{tasks.length} Tareas pendientes</p>
+			</div>
+
+		</>
 	);
 };
-
 export default Home;
