@@ -6,3 +6,25 @@ body{
     background-attachment: fixed; /* La imagen permanece fija al hacer scroll */
     
 }
+.card {
+    background-color: rgb(207, 245, 233);
+}
+.dynapuff {
+    font-family: "DynaPuff", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+    color: rgb(137, 172, 218);
+  }
+  .btn {
+    background-color: rgb(193, 215, 244);
+  }
+
+  .dancing-script {
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+  }
